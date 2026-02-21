@@ -24,17 +24,24 @@
             ]
           },
           {
-            "group": "Build & Integrate",
+            "group": "Integrations",
+            "pages": ["build/integrations"]
+          },
+          {
+            "group": "Build (API)",
+            "pages": ["build/auth", "build/search-syntax", "build/errors"]
+          },
+          {
+            "group": "Build (Exports)",
             "pages": [
-              "build/auth",
-              "build/search-syntax",
-              "build/errors",
               "build/exports",
               "build/exports/vuln-intel-format",
-              "build/exports/ioc-intel-format",
-              "build/integrations",
-              "build/mcp"
+              "build/exports/ioc-intel-format"
             ]
+          },
+          {
+            "group": "Build (Agents)",
+            "pages": ["build/mcp"]
           }
         ]
       },
