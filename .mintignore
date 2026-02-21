@@ -2,6 +2,15 @@
 # .git, .github, .claude, .agents, .idea, node_modules,
 # README.md, LICENSE.md, CHANGELOG.md, CONTRIBUTING.md
 
+# AGENTS.md is for Cursor/agent instructions, not docs content (avoids MDX parse errors)
+AGENTS.md
+
 # Draft content
 drafts/
 *.draft.mdx
+
+# Template-only content (replaced by Mallory structure)
+essentials/
+ai-tools/
+development.mdx
+api-reference/endpoint/

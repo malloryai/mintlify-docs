@@ -1,33 +1,50 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "API Reference"
+description: "Mallory API overview, base URL, and authentication"
 ---
-
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
 
 ## Welcome
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+The Mallory API is a REST API for querying threat intelligence: threat actors, malware, vulnerabilities, references, stories, exports, and more. The reference below is **generated from the live OpenAPI spec** so it stays in sync with the deployed API.
 
 <Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
+  title="OpenAPI specification"
+  icon="code"
+  href="https://api.mallory.ai/openapi.json"
 >
-  View the OpenAPI specification file
+  View the live OpenAPI spec (JSON)
 </Card>
+
+## Base URL
+
+Use this base URL for all requests:
+
+```
+https://api.mallory.ai
+```
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+All endpoints require authentication. Send your API key in the `Authorization` header as a Bearer token:
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
 ```
+Authorization: Bearer YOUR_API_KEY
+```
+
+See [Authentication](/build/auth) in the docs for how to get an API key and send it.
+
+## What's in the reference
+
+The sidebar (or tabs) for **API Reference** are generated from the OpenAPI spec. You'll find endpoints grouped by resource (e.g. actors, vulnerabilities, references, exports). Use the **Overview** section here for a quick recap; use the generated endpoint pages for parameters, request/response schemas, and examples.
+
+## Related
+
+<Card title="Authentication" icon="key" href="/build/auth">
+  Get and use your API key.
+</Card>
+<Card title="Search & filter syntax" icon="filter" href="/build/search-syntax">
+  Filter and pagination for list endpoints.
+</Card>
+<Card title="Errors & rate limits" icon="circle-exclamation" href="/build/errors">
+  HTTP status codes and error handling.
+</Card>

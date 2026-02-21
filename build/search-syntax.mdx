@@ -1,0 +1,51 @@
+---
+title: "Search & filter syntax"
+description: "How to filter and query list endpoints in the Mallory API"
+---
+
+## Filter parameter
+
+Many list endpoints support a **filter** query parameter. The filter is a string that can include optional **prefixes** to target specific fields.
+
+### Prefixes
+
+| Prefix | Meaning | Example |
+|--------|---------|---------|
+| `name:` | Filter by name (case-insensitive) | `name:APT29` |
+| `uuid:` | Filter by UUID (case-insensitive) | `uuid:abc-123` |
+| `internal_name:` | Filter by internal name (exact match) | `internal_name:m-threat-actor-...` |
+| `desc:` | Filter by description (searches description and gen_description) | `desc:ransomware` |
+| _(none)_ | Default: filter on display_name or name | `Lazarus Group` |
+
+### Examples
+
+- `name:APT` – Threat actors whose name contains "APT" (case-insensitive)
+- `lazarus_group` – Match display_name or name containing "lazarus_group"
+- `internal_name:m-threat-actor-happy-yellow-dog-a123` – Exact internal ID
+
+Exact behavior can vary by endpoint; see the [API Reference](/api-reference/introduction) for each endpoint's parameters.
+
+## Pagination and sort
+
+Common query parameters across list endpoints:
+
+- **limit** – Maximum number of items to return (e.g. default 100)
+- **offset** – Number of items to skip (for pagination)
+- **sort** – Field to sort by (e.g. `name`, `created_at`, `updated_at`, `trending_1d`)
+- **order** – `asc` or `desc`
+
+Example:
+
+```
+GET /v1/actors?limit=20&offset=0&sort=created_at&order=desc
+```
+
+## Other filters
+
+Some endpoints support additional filters (e.g. `targeted_industries`, `targeted_countries`, `source_countries`). See the OpenAPI spec or the API Reference for each resource.
+
+## Related
+
+<Card title="API Reference" icon="code" href="/api-reference/introduction">
+  Full parameter list per endpoint.
+</Card>

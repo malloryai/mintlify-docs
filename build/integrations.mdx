@@ -1,0 +1,32 @@
+---
+title: "Integrations"
+description: "Webhooks, integrations API, and connecting Mallory to your stack"
+---
+
+## Integrations overview
+
+Mallory can integrate with your existing tools and workflows via:
+
+- **API** – Use the REST API to query entities, references, exports, and more from your own apps and scripts.
+- **Integrations API** – Create and manage integration configurations (e.g. Slack, email, SIEM) via the API when supported.
+- **Webhooks** – (When available) Receive events or notifications when certain conditions are met.
+
+### What you can do
+
+- **Query intelligence** – Pull threat actors, vulnerabilities, malware, and indicators programmatically.
+- **Bulk export** – Schedule or trigger exports for ETL, SIEM, or data lakes. See [Exports](/build/exports).
+- **Configure integrations** – Set up outbound integrations (e.g. alerts to Slack or email) via the app or API when the feature is available.
+
+The exact integration surface (webhooks, integration types, and configuration) is documented in the API and in-app flows. Check the [API Reference](/api-reference/introduction) for endpoints under **Integrations** or **Exports**.
+
+## Related
+
+<Card title="Authentication" icon="key" href="/build/auth">
+  Authenticate API and integration calls.
+</Card>
+<Card title="MCP server" icon="terminal" href="/build/mcp">
+  Use Mallory from AI assistants via MCP.
+</Card>
+<Card title="API Reference" icon="code" href="/api-reference/introduction">
+  Integrations and webhooks endpoints.
+</Card>

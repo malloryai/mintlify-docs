@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Mallory",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#005CFF",
+    "light": "#135FFF",
+    "dark": "#0042B8"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -14,56 +14,41 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "First steps",
+            "pages": ["index", "quickstart", "concepts", "changelog"]
+          },
+          {
+            "group": "Use Mallory",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "use/chat",
+              "use/current-events",
+              "use/entities",
+              "use/indicators"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Build & integrate",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "build/auth",
+              "build/search-syntax",
+              "build/errors",
+              "build/exports",
+              "build/exports/vuln-intel-format",
+              "build/exports/ioc-intel-format",
+              "build/monitoring",
+              "build/integrations",
+              "build/mcp"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "API Reference",
+        "openapi": "https://api.mallory.ai/openapi.json",
         "groups": [
           {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
+            "group": "Overview",
+            "pages": ["api-reference/introduction"]
           }
         ]
       }
@@ -74,11 +59,6 @@
           "anchor": "Documentation",
           "href": "https://mintlify.com/docs",
           "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
         }
       ]
     }
@@ -88,35 +68,30 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
+    "links": [{ "label": "Support", "href": "mailto:support@mallory.ai" }],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://app.mallory.ai"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/malloryai",
+      "github": "https://github.com/malloryai",
+      "linkedin": "https://linkedin.com/company/malloryai"
     }
   }
 }
