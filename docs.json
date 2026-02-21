@@ -15,13 +15,11 @@
           },
           {
             "group": "Use Mallory",
-            "pages": [
-              "use/chat",
-              "use/current-events",
-              "use/stories",
-              "use/entities",
-              "use/indicators"
-            ]
+            "pages": ["use/threads", "use/feed", "use/stories", "use/search"]
+          },
+          {
+            "group": "Library",
+            "pages": ["use/entities", "use/observables"]
           },
           {
             "group": "Integrations",

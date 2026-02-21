@@ -1,0 +1,51 @@
+---
+title: "Observables"
+description: "Use the observables and IOC feed for detection and response"
+---
+
+## Observables (IOCs)
+
+**Observables** are evidence of potential malicious activity: IP addresses, domains, file hashes, URLs, email addresses, and similar artifacts. Mallory aggregates and enriches them from multiple sources and links them to entities (e.g. malware families or threat actors).
+
+### What you get
+
+- **Normalized observables** – Deduplicated where applicable
+- **Entity links** – Which malware, actor, or campaign they're associated with
+- **Context over time** – When and where they were observed or reported
+
+### Use Cases
+
+- **Detection** – Feed IOCs into your SIEM or detection stack
+- **Hunting** – Pivot from an entity to its observables
+- **Response** – Validate and contextualize IOCs during investigations
+
+### How to use it
+
+1. Use the **Observables** experience in the app (e.g. [app.mallory.ai](https://app.mallory.ai)), or
+2. Query the API (e.g. observables or entity-specific observable endpoints) for programmatic access.
+
+See the [API Reference](/api-reference/introduction) for the relevant endpoints.
+
+### In the app
+
+**Observables listing** – Search and filter IOCs and observables:
+
+![Observables listing](/images/observables-listing.png)
+
+**Observables detail** – View a single observable and its context:
+
+![Observables detail](/images/observables-detail.png)
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Entities" icon="shield" href="/use/entities">
+    Start from an entity and see its observables.
+  </Card>
+  <Card title="Key concepts" icon="unity" href="/concepts">
+    How observables relate to entities and references.
+  </Card>
+  <Card title="Exports" icon="file-export" href="/build/exports">
+    Bulk export and integration options.
+  </Card>
+</CardGroup>

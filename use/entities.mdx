@@ -5,15 +5,30 @@ description: "Browse and understand threat actors, malware, vulnerabilities, and
 
 ## Entities in Mallory
 
+Entities are part of the **Library** in Mallory—along with [Observables](/use/observables)—where you browse and manage core intelligence objects.
+
 **Entities** are the core objects Mallory tracks: threat actors, malware, vulnerabilities, organizations, and related types. Each entity page is a focal point for names, aliases, relationships, and linked intelligence.
 
 ### Entity Types
+
+Mallory exposes these entity types via the API; each has list and detail endpoints in the [API Reference](/api-reference/introduction).
+
+**Primary entities**
 
 - **Threat actors** – Groups and campaigns (e.g. APT29, Lazarus)
 - **Malware** – Families and variants (e.g. LockBit, QakBot)
 - **Vulnerabilities** – CVEs and related advisories
 - **Organizations** – Companies, vendors, and other named organizations
-- **Other** – Attack patterns, breaches, and related entity types as supported
+
+**Related entity types**
+
+- **Attack Patterns** – MITRE ATT&amp;CK techniques and subtechniques
+- **Breaches** – Incidents and linked organizations
+- **Detection signatures** – Signatures and rules for detecting threats
+- **Exploitations** – Links between vulnerabilities and exploits
+- **Exploits** – Exploit code and tools
+- **Products** – Technology products (software, hardware)
+- **Advisories** – Vendor advisories tied to products and vulnerabilities
 
 ### What you can do
 
@@ -30,7 +45,7 @@ description: "Browse and understand threat actors, malware, vulnerabilities, and
 
 ## API Access
 
-You can list and retrieve entities via the API. See the [API Reference](/api-reference/introduction) for endpoints such as `/v1/actors`, `/v1/vulnerabilities`, `/v1/malware`, and `/v1/organizations`.
+You can list and retrieve all of the entity types above via the API. The [API Reference](/api-reference/introduction) documents every entity endpoint (e.g. `/v1/actors`, `/v1/vulnerabilities`, `/v1/malware`, `/v1/organizations`, `/v1/attack_patterns`, `/v1/breaches`, `/v1/exploits`, and the rest).
 
 ## Related
 
@@ -38,7 +53,7 @@ You can list and retrieve entities via the API. See the [API Reference](/api-ref
   <Card title="Key concepts" icon="unity" href="/concepts">
     How entities, mentions, and references fit together.
   </Card>
-  <Card title="Indicators" icon="magnifying-glass" href="/use/indicators">
+  <Card title="Observables" icon="magnifying-glass" href="/use/observables">
     IOCs and observables linked to entities.
   </Card>
   <Card title="Search syntax" icon="code" href="/build/search-syntax">
