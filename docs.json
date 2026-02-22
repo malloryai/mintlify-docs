@@ -2,16 +2,20 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "Mallory",
-  "colors": { "primary": "#005CFF", "light": "#135FFF", "dark": "#0042B8" },
+  "colors": {
+    "primary": "#005CFF",
+    "light": "#135FFF",
+    "dark": "#0042B8"
+  },
   "favicon": "/favicon.ico",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "User Guides",
         "groups": [
           {
             "group": "First Steps",
-            "pages": ["index", "quickstart", "concepts", "changelog"]
+            "pages": ["index", "quickstart", "concepts"]
           },
           {
             "group": "Mallory Intelligence",
@@ -37,6 +41,16 @@
           {
             "group": "Integrations",
             "pages": ["build/integrations"]
+          }
+        ]
+      },
+      {
+        "tab": "Build with Mallory",
+        "groups": [
+          {
+            "group": "Build with Mallory",
+            "root": "build",
+            "pages": ["build"]
           },
           {
             "group": "Build (API)",
@@ -67,7 +81,10 @@
         "tab": "API Reference",
         "openapi": "https://api.mallory.ai/openapi.json",
         "groups": [
-          { "group": "Overview", "pages": ["api-reference/introduction"] },
+          {
+            "group": "Overview",
+            "pages": ["api-reference/introduction"]
+          },
           {
             "group": "Entities",
             "pages": [
@@ -270,7 +287,10 @@
               "PUT /v1/profiles/{uuid}"
             ]
           },
-          { "group": "User", "pages": ["GET /v1/user"] },
+          {
+            "group": "User",
+            "pages": ["GET /v1/user"]
+          },
           {
             "group": "Exports",
             "pages": [
@@ -281,25 +301,32 @@
             ]
           },
           {
-            "group": "Other",
+            "group": "Integrations",
             "pages": [
               "DELETE /v1/integrations/{integration_uuid}",
-              "DELETE /v1/schedules/{schedule_uuid}",
               "GET /v1/integrations",
               "GET /v1/integrations/meta/capabilities",
               "GET /v1/integrations/meta/schemas",
               "GET /v1/integrations/{integration_uuid}",
+              "PATCH /v1/integrations/{integration_uuid}",
+              "POST /v1/integrations",
+              "POST /v1/integrations/{integration_uuid}/actions/{action}"
+            ]
+          },
+          {
+            "group": "Schedules",
+            "pages": [
+              "DELETE /v1/schedules/{schedule_uuid}",
               "GET /v1/schedules",
               "GET /v1/schedules/{schedule_uuid}",
               "GET /v1/schedules/{schedule_uuid}/executions",
-              "GET /v1/sources",
-              "PATCH /v1/integrations/{integration_uuid}",
               "PATCH /v1/schedules/{schedule_uuid}",
-              "POST /v1/integrations",
-              "POST /v1/integrations/{integration_uuid}/actions/{action}",
-              "POST /v1/schedules",
-              "POST /v1/sources"
+              "POST /v1/schedules"
             ]
+          },
+          {
+            "group": "Sources",
+            "pages": ["GET /v1/sources", "POST /v1/sources"]
           }
         ]
       }
@@ -307,16 +334,29 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Community",
+          "anchor": "Support Community",
           "href": "https://join.slack.com/t/mallorycommunity/shared_invite/zt-3h9c09jw3-xmWYwAgPaU7~briLd9XUtQ",
-          "icon": "book-open-cover"
+          "icon": "users"
+        },
+        {
+          "anchor": "Changelog",
+          "href": "/changelog",
+          "icon": "clock"
         }
       ]
     }
   },
-  "logo": { "light": "/logo/light.svg", "dark": "/logo/dark.svg" },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
   "navbar": {
-    "links": [{ "label": "Support", "href": "mailto:hello@mallory.ai" }],
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:hello@mallory.ai"
+      }
+    ],
     "primary": {
       "type": "button",
       "label": "Dashboard",

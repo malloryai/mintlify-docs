@@ -1,0 +1,73 @@
+---
+title: "Build with Mallory"
+description: "Integrate Mallory into your apps and workflows via the API, bulk exports, or open source tooling"
+---
+
+## Ways to Build
+
+You can integrate Mallory's threat intelligence into your own systems and workflows in three main ways: use the **API** for queries and automation, pull **bulk data** via exports, or use our **open source** clients and tools.
+
+<Columns cols={3}>
+  <Card title="API" icon="code" href="/build/api/auth">
+    Call the Mallory API for search, entities, stories, and more. Authenticate with an API key and use REST or our Python SDK.
+  </Card>
+  <Card title="Exports" icon="database" href="/build/exports/index">
+    Pull vulnerability and IOC intelligence in bulk. Use full or incremental exports on a schedule for pipelines and data lakes.
+  </Card>
+  <Card title="Open Source" icon="github" href="/build/opensource">
+    Use our Python client, MCP server, Asset Query, and Claude Code plugins to embed Mallory in your tools and AI workflows.
+  </Card>
+</Columns>
+
+## API
+
+Use the Mallory API when you need to **query on demand**, power UIs, or automate workflows. You can search vulnerabilities, threat actors, malware, stories, and references; filter and paginate; and use our [search syntax](/build/api/search-syntax) for full-text and structured queries.
+
+<Card title="Authentication" icon="key" href="/build/api/auth">
+  API keys and Bearer token authentication.
+</Card>
+<Card title="API Reference" icon="book" href="/api-reference/introduction">
+  Full endpoint reference for all entities and operations.
+</Card>
+
+## Exports (Our Data)
+
+Use **exports** when you need **bulk or scheduled data**—for example, syncing into your data lake, SIEM, or internal systems. Exports are generated on a schedule (e.g. hourly) and support vulnerability intelligence and IOC (observables/opinions) formats.
+
+<Card title="Exports overview" icon="chart-line" href="/build/exports/index">
+  Export types, strategies, and how to get the latest export.
+</Card>
+<Card title="Vulnerability intelligence format" icon="file-lines" href="/build/exports/vuln-intel-format">
+  Schema and fields for vulnerability exports.
+</Card>
+<Card title="IOC intelligence format" icon="file-lines" href="/build/exports/ioc-intel-format">
+  Schema for observables and opinions exports.
+</Card>
+
+## Open Source Tooling
+
+Use our **open source** projects to embed Mallory in the tools you already use: a typed Python client, an MCP server for Cursor and Claude Code, Asset Query for asset discovery, and Claude Code plugins for adversary emulation and vulnerability escalation.
+
+<Card title="Open source projects" icon="github" href="/build/opensource">
+  API client, MCP server, Asset Query, and Claude Code plugins.
+</Card>
+
+## Next Steps
+
+<Card
+  title="Quickstart"
+  icon="rocket"
+  href="/quickstart"
+  horizontal
+>
+  Get an API key and run your first request.
+</Card>
+
+<Card
+  title="Integrations"
+  icon="plug"
+  href="/build/integrations"
+  horizontal
+>
+  Connect Mallory to Slack, ticketing, and other tools.
+</Card>
