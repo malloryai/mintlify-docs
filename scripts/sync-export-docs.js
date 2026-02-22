@@ -10,8 +10,8 @@
  *   CORE_DIR  Path to core repo (default: ../core relative to this script's repo root)
  *
  * Does:
- *   1. Optionally runs core's docs/exports/generate.py to refresh vuln_intel_format.md
- *   2. Copies vuln_intel_format.md and ioc_intel_format.md from core/docs/exports/
+ *   1. Optionally runs core's docs/gen/exports/generate.py to refresh vuln_intel_format.md
+ *   2. Copies vuln_intel_format.md and ioc_intel_format.md from core/docs/gen/exports/
  *      into build/exports/ as .mdx with frontmatter; strips auto-generated HTML comments.
  */
 
@@ -21,7 +21,7 @@ const { execSync } = require("child_process");
 
 const REPO_ROOT = path.resolve(__dirname, "..");
 const CORE_DIR = process.env.CORE_DIR || path.resolve(REPO_ROOT, "..", "core");
-const CORE_EXPORTS = path.join(CORE_DIR, "docs", "exports");
+const CORE_EXPORTS = path.join(CORE_DIR, "docs", "gen", "exports");
 const OUT_DIR = path.join(REPO_ROOT, "build", "exports");
 
 const FILES = [
@@ -77,7 +77,7 @@ function main() {
     }
     try {
       execSync(
-        "pdm run python docs/exports/generate.py --output-dir docs/exports/",
+        "pdm run python docs/gen/exports/generate.py --output-dir docs/gen/exports/",
         {
           cwd: CORE_DIR,
           stdio: "inherit",
