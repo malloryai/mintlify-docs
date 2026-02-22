@@ -34,26 +34,6 @@ node scripts/sync-export-docs.js --regenerate
 
 ---
 
-## Updating the API Reference OpenAPI file
-
-The docs site uses a **local** OpenAPI spec at `api-reference/openapi.json` so Mintlify deployment doesn’t depend on fetching `https://api.mallory.ai/openapi.json` at build time.
-
-To refresh the API reference after API changes:
-
-1. In the **core** repo, regenerate the public spec:
-   ```bash
-   pdm run python core/scripts/generate_openapi_doc.py
-   ```
-2. Copy the generated file into the docs repo:
-   ```bash
-   cp core/docs/gen/openapi.json mintlify-docs/api-reference/openapi.json
-   ```
-3. Commit and push the updated `api-reference/openapi.json` in mintlify-docs.
-
-Optionally, add a CI job in core that runs the generator and commits the result to mintlify-docs, or a script in mintlify-docs that runs the core generator and copies the file.
-
----
-
 ## notify-changelog-to-slack.js
 
 When the changelog page (`changelog.mdx`) is updated, posts the latest timeline section to Slack (internal and community webhooks). Uses **git history** to detect changes (no hash file). Used in GitHub Actions so that updates to the changelog trigger a notification to the two changelog channels.
