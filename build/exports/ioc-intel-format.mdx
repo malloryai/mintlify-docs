@@ -1,16 +1,13 @@
 ---
-title: "IoC Intel Export (Format)"
+title: "IOC intelligence export format"
 description: "Schema and field reference for the IOC (indicator of compromise) bulk export"
 ---
 
 # IOC Intelligence Export Models Documentation
 
+
 **Version:** 1.0.0
 **Description:** IOC (Indicator of Compromise) Intelligence Export Models Documentation
-
-## Overview
-
-The IOC Intelligence export provides observables (indicators of compromise) with their associated opinions from various threat intelligence sources. This export is designed to help security teams integrate threat indicators into their existing security infrastructure.
 
 ## Version History
 
@@ -28,8 +25,6 @@ For additional materials including the complete JSON schema, API documentation, 
 - [Export Models](#export-models)
   - [Observable](#observable)
   - [Opinion](#opinion)
-- [Configuration](#configuration)
-- [API Usage](#api-usage)
 - [Examples](#examples)
 
 ## Export Record Format
@@ -49,17 +44,17 @@ Each line in the JSONL export contains a complete observable record with all rel
 
 ### Export Record Fields
 
-| Field             | Type            | Required | Description                                                                         |
-| ----------------- | --------------- | -------- | ----------------------------------------------------------------------------------- |
-| `uuid`            | `string`        | ✅       | Unique identifier for this record                                                   |
-| `created_at`      | `string`        | ✅       | When this record was first created in the system                                    |
-| `updated_at`      | `string`        | ✅       | When this record was last updated in the system                                     |
-| `observable`      | `object`        | ✅       | The observable (IOC) data                                                           |
-| `opinions`        | `array[object]` |          | List of opinions about this observable from various sources                         |
-| `verdict_summary` | `object`        |          | Summary of verdicts across all opinions (e.g., `{"malicious": 3, "suspicious": 1}`) |
-| `source_count`    | `integer`       |          | Number of unique sources with opinions on this observable                           |
-| `first_seen_at`   | `string`        |          | Earliest published_at timestamp across all opinions (ISO format)                    |
-| `last_seen_at`    | `string`        |          | Latest published_at timestamp across all opinions (ISO format)                      |
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `uuid` | `string` | ✅ | Unique identifier for this record |
+| `created_at` | `string` | ✅ | When this record was first created in the system |
+| `updated_at` | `string` | ✅ | When this record was last updated in the system |
+| `observable` | `object` | ✅ | The observable (IOC) data |
+| `opinions` | `array[object]` |  | List of opinions about this observable from various sources |
+| `verdict_summary` | `object` |  | Summary of verdicts across all opinions (e.g., {'malicious': 3, 'suspicious': 1}) |
+| `source_count` | `integer` |  | Number of unique sources with opinions on this observable |
+| `first_seen_at` | `string` |  | Earliest published_at timestamp across all opinions (ISO format) |
+| `last_seen_at` | `string` |  | Latest published_at timestamp across all opinions (ISO format) |
 
 ### Export Models
 
@@ -73,29 +68,15 @@ The following models represent the individual components that make up the comple
 
 ##### Fields
 
-| Field         | Type     | Required | Description                                                                                          |
-| ------------- | -------- | -------- | ---------------------------------------------------------------------------------------------------- |
-| `uuid`        | `string` | ✅       | Unique identifier for this observable                                                                |
-| `type`        | `string` | ✅       | Type of observable (e.g., 'ip.v4', 'ip.v6', 'domain', 'uri', 'hash.md5', 'hash.sha1', 'hash.sha256') |
-| `name`        | `string` | ✅       | The observable value (normalized)                                                                    |
-| `description` | `string` |          | Optional description of the observable                                                               |
-| `attributes`  | `object` |          | Additional attributes associated with the observable                                                 |
-| `created_at`  | `string` | ✅       | When this observable was first created in the system                                                 |
-| `updated_at`  | `string` | ✅       | When this observable was last updated in the system                                                  |
-
-##### Observable Types
-
-The following observable types are supported:
-
-| Type          | Description  | Example                                                            |
-| ------------- | ------------ | ------------------------------------------------------------------ |
-| `ip.v4`       | IPv4 address | `192.168.1.1`                                                      |
-| `ip.v6`       | IPv6 address | `2001:db8::1`                                                      |
-| `domain`      | Domain name  | `malicious-domain.com`                                             |
-| `uri`         | Full URI     | `https://example.com/path`                                         |
-| `hash.md5`    | MD5 hash     | `d41d8cd98f00b204e9800998ecf8427e`                                 |
-| `hash.sha1`   | SHA-1 hash   | `da39a3ee5e6b4b0d3255bfef95601890afd80709`                         |
-| `hash.sha256` | SHA-256 hash | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `uuid` | `string` | ✅ | Unique identifier for this observable |
+| `type` | `string` | ✅ | Type of observable (e.g., 'ip.v4', 'ip.v6', 'domain', 'uri', 'hash.md5', 'hash.sha1', 'hash.sha256') |
+| `name` | `string` | ✅ | The observable value (normalized) |
+| `description` | `string` |  | Optional description of the observable |
+| `attributes` | `object` |  | Additional attributes associated with the observable |
+| `created_at` | `string` | ✅ | When this observable was first created in the system |
+| `updated_at` | `string` | ✅ | When this observable was last updated in the system |
 
 ##### Summary
 
@@ -111,37 +92,20 @@ The following observable types are supported:
 
 ##### Fields
 
-| Field                   | Type     | Required | Description                                                        |
-| ----------------------- | -------- | -------- | ------------------------------------------------------------------ |
-| `uuid`                  | `string` | ✅       | Unique identifier for this opinion                                 |
-| `verdict`               | `string` |          | Opinion verdict: 'malicious', 'suspicious', 'benign', or 'unknown' |
-| `source`                | `string` | ✅       | Source of the opinion (typically the source slug)                  |
-| `confidence`            | `string` |          | Confidence level: 'low', 'medium', or 'high'                       |
-| `description`           | `string` |          | Description or context for the opinion                             |
-| `attributes`            | `object` |          | Additional attributes from the opinion source                      |
-| `reference_url`         | `string` |          | Original URL where this opinion was published                      |
-| `reference_source_slug` | `string` |          | Source slug of the reference (content source identifier)           |
-| `reference_uuid`        | `string` |          | UUID of the associated reference in Mallory                        |
-| `published_at`          | `string` | ✅       | When this opinion was published by the source                      |
-| `created_at`            | `string` | ✅       | When this opinion was first created in Mallory                     |
-| `updated_at`            | `string` | ✅       | When this opinion was last updated in Mallory                      |
-
-##### Verdict Values
-
-| Verdict      | Description                                               |
-| ------------ | --------------------------------------------------------- |
-| `malicious`  | The observable is confirmed malicious                     |
-| `suspicious` | The observable is potentially malicious but not confirmed |
-| `benign`     | The observable is confirmed safe                          |
-| `unknown`    | The verdict is not yet determined                         |
-
-##### Confidence Levels
-
-| Level    | Description                        |
-| -------- | ---------------------------------- |
-| `high`   | High confidence in the verdict     |
-| `medium` | Moderate confidence in the verdict |
-| `low`    | Low confidence in the verdict      |
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `uuid` | `string` | ✅ | Unique identifier for this opinion |
+| `verdict` | `string` |  | Opinion verdict: 'malicious', 'suspicious', 'benign', or 'unknown' |
+| `source` | `string` | ✅ | Source of the opinion (typically the source slug) |
+| `confidence` | `string` |  | Confidence level: 'low', 'medium', or 'high' |
+| `description` | `string` |  | Description or context for the opinion |
+| `attributes` | `object` |  | Additional attributes from the opinion source |
+| `reference_url` | `string` |  | Original URL where this opinion was published |
+| `reference_source_slug` | `string` |  | Source slug of the reference (content source identifier) |
+| `reference_uuid` | `string` |  | UUID of the associated reference in Mallory |
+| `published_at` | `string` | ✅ | When this opinion was published by the source |
+| `created_at` | `string` | ✅ | When this opinion was first created in Mallory |
+| `updated_at` | `string` | ✅ | When this opinion was last updated in Mallory |
 
 ##### Summary
 
@@ -149,84 +113,9 @@ The following observable types are supported:
 - **Required Fields:** 5
 - **Optional Fields:** 7
 
-## Configuration
-
-### Verdict Filter
-
-By default, the IOC intelligence export includes only observables with `malicious` or `suspicious` verdicts. This can be configured via the schedule or API.
-
-**Default:** `["malicious", "suspicious"]`
-
-**Available values:** `malicious`, `suspicious`, `benign`, `unknown`
-
-### Type Filter
-
-Optionally, you can filter the export to include only specific observable types. If not specified, all types are included.
-
-**Default:** `None` (all types included)
-
-**Available values:** `ip.v4`, `ip.v6`, `domain`, `uri`, `hash.md5`, `hash.sha1`, `hash.sha256`
-
-### Example Schedule Configurations
-
-#### Basic Configuration (default filters)
-
-```python
-ExportWorkflowParams(
-    export_type="ioc_intel",
-    export_strategy="incremental",
-    export_format="jsonl",
-    export_content={"verdict_filter": ["malicious", "suspicious"]},
-)
-```
-
-#### Filter by Observable Type
-
-```python
-# Export only IP addresses and domains
-ExportWorkflowParams(
-    export_type="ioc_intel",
-    export_strategy="incremental",
-    export_format="jsonl",
-    export_content={
-        "verdict_filter": ["malicious", "suspicious"],
-        "type_filter": ["ip.v4", "ip.v6", "domain"],
-    },
-)
-```
-
-#### Export Only Hash Indicators
-
-```python
-# Export only file hashes for threat hunting
-ExportWorkflowParams(
-    export_type="ioc_intel",
-    export_strategy="full",
-    export_format="jsonl",
-    export_content={
-        "verdict_filter": ["malicious"],
-        "type_filter": ["hash.md5", "hash.sha1", "hash.sha256"],
-    },
-)
-```
-
-## API Usage
-
-### Retrieve Latest Export
-
-```bash
-curl -X GET "https://api.mallory.ai/v1/exports/latest?export_type=ioc_intel&export_strategy=incremental" \
-  -H "Authorization: Bearer $MALLORY_API_KEY"
-```
-
-### List Export History
-
-```bash
-curl -X GET "https://api.mallory.ai/v1/exports?export_type=ioc_intel" \
-  -H "Authorization: Bearer $MALLORY_API_KEY"
-```
-
 ## Examples
+
+Below are complete example records showing the structure and content of each export model:
 
 ### Complete Export Record
 
@@ -235,59 +124,40 @@ A complete IOC intelligence record with observable and opinions:
 ```json
 {
   "uuid": "550e8400-e29b-41d4-a716-446655440000",
-  "created_at": "2025-01-15T10:30:00Z",
-  "updated_at": "2025-02-01T14:30:00Z",
+  "created_at": "2024-06-15T10:30:00+00:00",
+  "updated_at": "2024-06-20T14:00:00+00:00",
   "observable": {
     "uuid": "550e8400-e29b-41d4-a716-446655440000",
     "type": "ip.v4",
-    "name": "192.168.100.50",
-    "description": "Known C2 server for APT group",
-    "attributes": {
-      "asn": "AS12345",
-      "country": "RU"
-    },
-    "created_at": "2025-01-15T10:30:00Z",
-    "updated_at": "2025-02-01T14:30:00Z"
+    "name": "192.168.1.100",
+    "description": "Suspicious C2 endpoint from threat report",
+    "attributes": null,
+    "created_at": "2024-06-15T10:30:00+00:00",
+    "updated_at": "2024-06-20T14:00:00+00:00"
   },
   "opinions": [
     {
       "uuid": "660e8400-e29b-41d4-a716-446655440001",
       "verdict": "malicious",
-      "source": "abuse_ch_feodotracker",
+      "source": "abuse_ch_urlhaus",
       "confidence": "high",
-      "description": "Identified as Emotet C2 server",
-      "attributes": {
-        "malware_family": "Emotet",
-        "first_seen_utc": "2025-01-10T00:00:00Z"
-      },
-      "reference_url": "https://feodotracker.abuse.ch/browse/host/192.168.100.50/",
-      "reference_source_slug": "abuse_ch_feodotracker",
-      "reference_uuid": "770e8400-e29b-41d4-a716-446655440002",
-      "published_at": "2025-01-10T00:00:00Z",
-      "created_at": "2025-01-15T10:30:00Z",
-      "updated_at": "2025-01-15T10:30:00Z"
-    },
-    {
-      "uuid": "880e8400-e29b-41d4-a716-446655440003",
-      "verdict": "malicious",
-      "source": "alienvault_otx",
-      "confidence": "medium",
-      "description": "Associated with botnet activity",
+      "description": "Listed on URLhaus as malicious host",
       "attributes": null,
-      "reference_url": "https://otx.alienvault.com/indicator/ip/192.168.100.50",
-      "reference_source_slug": "alienvault_otx",
-      "reference_uuid": "990e8400-e29b-41d4-a716-446655440004",
-      "published_at": "2025-01-12T08:00:00Z",
-      "created_at": "2025-01-16T12:00:00Z",
-      "updated_at": "2025-01-16T12:00:00Z"
+      "reference_url": "https://urlhaus.abuse.ch/host/192.168.1.100/",
+      "reference_source_slug": "abuse_ch_urlhaus",
+      "reference_uuid": "770e8400-e29b-41d4-a716-446655440002",
+      "published_at": "2024-06-18T12:00:00+00:00",
+      "created_at": "2024-06-15T10:30:00+00:00",
+      "updated_at": "2024-06-20T14:00:00+00:00"
     }
   ],
   "verdict_summary": {
-    "malicious": 2
+    "malicious": 1,
+    "suspicious": 0
   },
-  "source_count": 2,
-  "first_seen_at": "2025-01-10T00:00:00Z",
-  "last_seen_at": "2025-01-12T08:00:00Z"
+  "source_count": 1,
+  "first_seen_at": "2024-06-18T12:00:00+00:00",
+  "last_seen_at": "2024-06-18T12:00:00+00:00"
 }
 ```
 
@@ -296,15 +166,12 @@ A complete IOC intelligence record with observable and opinions:
 ```json
 {
   "uuid": "550e8400-e29b-41d4-a716-446655440000",
-  "type": "hash.sha256",
-  "name": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "description": "Malware sample hash",
-  "attributes": {
-    "file_type": "PE32",
-    "file_size": 65536
-  },
-  "created_at": "2025-01-15T10:30:00Z",
-  "updated_at": "2025-01-15T10:30:00Z"
+  "type": "ip.v4",
+  "name": "192.168.1.100",
+  "description": "Suspicious C2 endpoint from threat report",
+  "attributes": null,
+  "created_at": "2024-06-15T10:30:00+00:00",
+  "updated_at": "2024-06-20T14:00:00+00:00"
 }
 ```
 
@@ -313,125 +180,16 @@ A complete IOC intelligence record with observable and opinions:
 ```json
 {
   "uuid": "660e8400-e29b-41d4-a716-446655440001",
-  "verdict": "suspicious",
-  "source": "virustotal_reports",
-  "confidence": "medium",
-  "description": "Detected by 15/72 AV engines",
-  "attributes": {
-    "detection_count": 15,
-    "total_engines": 72,
-    "detection_rate": 0.208
-  },
-  "reference_url": "https://www.virustotal.com/gui/file/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "reference_source_slug": "virustotal_reports",
+  "verdict": "malicious",
+  "source": "abuse_ch_urlhaus",
+  "confidence": "high",
+  "description": "Listed on URLhaus as malicious host",
+  "attributes": null,
+  "reference_url": "https://urlhaus.abuse.ch/host/192.168.1.100/",
+  "reference_source_slug": "abuse_ch_urlhaus",
   "reference_uuid": "770e8400-e29b-41d4-a716-446655440002",
-  "published_at": "2025-01-15T10:00:00Z",
-  "created_at": "2025-01-15T10:30:00Z",
-  "updated_at": "2025-01-15T10:30:00Z"
+  "published_at": "2024-06-18T12:00:00+00:00",
+  "created_at": "2024-06-15T10:30:00+00:00",
+  "updated_at": "2024-06-20T14:00:00+00:00"
 }
 ```
-
-### Domain Observable with Multiple Opinions
-
-```json
-{
-  "uuid": "aa0e8400-e29b-41d4-a716-446655440005",
-  "created_at": "2025-01-20T08:00:00Z",
-  "updated_at": "2025-02-01T16:45:00Z",
-  "observable": {
-    "uuid": "aa0e8400-e29b-41d4-a716-446655440005",
-    "type": "domain",
-    "name": "malware-c2.evil.com",
-    "description": null,
-    "attributes": null,
-    "created_at": "2025-01-20T08:00:00Z",
-    "updated_at": "2025-02-01T16:45:00Z"
-  },
-  "opinions": [
-    {
-      "uuid": "bb0e8400-e29b-41d4-a716-446655440006",
-      "verdict": "malicious",
-      "source": "abuse_ch_urlhaus",
-      "confidence": "high",
-      "description": "Hosting malware payload",
-      "attributes": {
-        "threat_type": "malware_download"
-      },
-      "reference_url": "https://urlhaus.abuse.ch/host/malware-c2.evil.com/",
-      "reference_source_slug": "abuse_ch_urlhaus",
-      "reference_uuid": "cc0e8400-e29b-41d4-a716-446655440007",
-      "published_at": "2025-01-20T06:00:00Z",
-      "created_at": "2025-01-20T08:00:00Z",
-      "updated_at": "2025-01-20T08:00:00Z"
-    },
-    {
-      "uuid": "dd0e8400-e29b-41d4-a716-446655440008",
-      "verdict": "suspicious",
-      "source": "dns_threat_intel",
-      "confidence": "low",
-      "description": "Recently registered domain with suspicious patterns",
-      "attributes": {
-        "registration_date": "2025-01-15",
-        "registrar": "unknown"
-      },
-      "reference_url": null,
-      "reference_source_slug": "dns_threat_intel",
-      "reference_uuid": null,
-      "published_at": "2025-01-19T12:00:00Z",
-      "created_at": "2025-01-20T08:00:00Z",
-      "updated_at": "2025-01-20T08:00:00Z"
-    }
-  ],
-  "verdict_summary": {
-    "malicious": 1,
-    "suspicious": 1
-  },
-  "source_count": 2,
-  "first_seen_at": "2025-01-19T12:00:00Z",
-  "last_seen_at": "2025-01-20T06:00:00Z"
-}
-```
-
-## Integration Guide
-
-### Using the Export Data
-
-The IOC intelligence export is designed for integration with:
-
-1. **SIEM Systems** - Import indicators for correlation and alerting
-2. **Threat Intelligence Platforms (TIPs)** - Enrich your threat intelligence database
-3. **Firewalls/IDS/IPS** - Create blocklists or detection rules
-4. **Endpoint Detection and Response (EDR)** - Add indicators for hunting
-
-### Processing the JSONL File
-
-```python
-import json
-
-with open('ioc_intel_export.jsonl', 'r') as f:
-    for line in f:
-        record = json.loads(line)
-        observable = record['observable']
-        opinions = record['opinions']
-
-        # Filter by observable type
-        if observable['type'] == 'ip.v4':
-            # Add to IP blocklist
-            pass
-        elif observable['type'] == 'domain':
-            # Add to domain blocklist
-            pass
-        elif observable['type'].startswith('hash.'):
-            # Add to file hash lookup
-            pass
-
-        # Use verdict summary for prioritization
-        if record['verdict_summary'].get('malicious', 0) > 0:
-            # High priority indicator
-            pass
-```
-
-### Incremental vs Full Exports
-
-- **Full Export**: Contains all observables with matching verdicts. Use for initial import or periodic reconciliation.
-- **Incremental Export**: Contains only observables updated in the last 24 hours (configurable). Use for daily updates to keep your systems current.
