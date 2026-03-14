@@ -1,6 +1,7 @@
 {
   "permissions": {
     "additionalDirectories": [
+      "../agent-builder",
       "../rules"
     ]
   }
