@@ -235,10 +235,6 @@
           {
             "group": "Stories",
             "pages": [
-              "GET /v1/dashboards/current-events",
-              "GET /v1/dashboards/vulnerabilities",
-              "GET /v1/dashboards/{report_type}/latest",
-              "GET /v1/dashboards/{report_uuid}",
               "GET /v1/mentions",
               "GET /v1/mentions/actors",
               "GET /v1/mentions/vulnerabilities",
@@ -252,8 +248,7 @@
               "GET /v1/stories/{identifier}/observables",
               "GET /v1/stories/{identifier}/references",
               "GET /v1/stories/{identifier}/similar",
-              "GET /v1/stories/{identifier}/timeline",
-              "PATCH /v1/stories/{identifier}"
+              "GET /v1/stories/{identifier}/timeline"
             ]
           },
           {
