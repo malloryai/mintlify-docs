@@ -94,7 +94,9 @@
                   "GET /v1/actors",
                   "GET /v1/actors/{identifier}",
                   "GET /v1/actors/{identifier}/attack_patterns",
+                  "GET /v1/actors/{identifier}/exploitations",
                   "GET /v1/actors/{identifier}/export",
+                  "GET /v1/actors/{identifier}/malware",
                   "GET /v1/actors/{identifier}/mentions",
                   "GET /v1/actors/{identifier}/observables"
                 ]
@@ -114,7 +116,11 @@
                 "pages": [
                   "GET /v1/breaches",
                   "GET /v1/breaches/{identifier}",
-                  "GET /v1/breaches/{identifier}/organizations"
+                  "GET /v1/breaches/{identifier}/attack-patterns",
+                  "GET /v1/breaches/{identifier}/malware",
+                  "GET /v1/breaches/{identifier}/mentions",
+                  "GET /v1/breaches/{identifier}/organizations",
+                  "GET /v1/breaches/{identifier}/threat-actors"
                 ]
               },
               {
@@ -153,6 +159,7 @@
                   "GET /v1/malware/{identifier}/export",
                   "GET /v1/malware/{identifier}/mentions",
                   "GET /v1/malware/{identifier}/observables",
+                  "GET /v1/malware/{identifier}/threat_actors",
                   "GET /v1/malware/{identifier}/vulnerabilities"
                 ]
               },
@@ -198,11 +205,12 @@
                   "GET /v1/vulnerabilities/{identifier}/exploitations",
                   "GET /v1/vulnerabilities/{identifier}/exploits",
                   "GET /v1/vulnerabilities/{identifier}/export",
+                  "GET /v1/vulnerabilities/{identifier}/malware",
                   "GET /v1/vulnerabilities/{identifier}/mentions",
                   "GET /v1/vulnerabilities/{identifier}/observables",
                   "GET /v1/vulnerabilities/{identifier}/products",
                   "GET /v1/vulnerabilities/{identifier}/technology_product_advisories",
-                  "GET /v1/vulnerabilities/{identifier}/malware"
+                  "GET /v1/vulnerabilities/{identifier}/threat_actors"
                 ]
               },
               {
@@ -238,11 +246,14 @@
               "GET /v1/stories",
               "GET /v1/stories/topics",
               "GET /v1/stories/{identifier}",
+              "GET /v1/stories/{identifier}/citations",
               "GET /v1/stories/{identifier}/entities",
               "GET /v1/stories/{identifier}/events",
               "GET /v1/stories/{identifier}/export",
+              "GET /v1/stories/{identifier}/observables",
               "GET /v1/stories/{identifier}/references",
               "GET /v1/stories/{identifier}/similar",
+              "GET /v1/stories/{identifier}/timeline",
               "PATCH /v1/stories/{identifier}"
             ]
           },
@@ -255,7 +266,9 @@
               "GET /v1/references",
               "GET /v1/references/labels",
               "GET /v1/references/{identifier}",
+              "GET /v1/references/{identifier}/citations",
               "GET /v1/references/{identifier}/entities",
+              "GET /v1/references/{identifier}/observables",
               "GET /v1/references/{identifier}/threat-actor-mentions",
               "GET /v1/references/{identifier}/threat-actors",
               "GET /v1/references/{identifier}/vulnerabilities",
@@ -268,23 +281,30 @@
             "pages": [
               "DELETE /v1/observables/{uuid}",
               "DELETE /v1/opinions/{uuid}",
-              "DELETE /v1/profiles/{uuid}",
               "GET /v1/observables",
+              "GET /v1/observables/{type}/{name}",
               "GET /v1/observables/{uuid}",
               "GET /v1/observables/{uuid}/opinions",
+              "GET /v1/observables/{observable_type}/{observable_name}/opinions",
               "GET /v1/opinions",
               "GET /v1/opinions/grouped",
               "GET /v1/opinions/{uuid}",
-              "GET /v1/profiles",
-              "GET /v1/profiles/{uuid}",
               "PATCH /v1/observables/{uuid}",
               "PATCH /v1/opinions/{uuid}",
               "POST /v1/observables",
-              "POST /v1/opinions",
-              "POST /v1/profiles",
-              "POST /v1/profiles/{uuid}/add_entities",
-              "POST /v1/profiles/{uuid}/add_topics",
-              "PUT /v1/profiles/{uuid}"
+              "POST /v1/opinions"
+            ]
+          },
+          {
+            "group": "Workspaces",
+            "pages": [
+              "GET /v1/workspaces",
+              "POST /v1/workspaces",
+              "GET /v1/workspaces/{uuid}",
+              "PUT /v1/workspaces/{uuid}",
+              "GET /v1/workspaces/{uuid}/entities",
+              "POST /v1/workspaces/{uuid}/add_entities",
+              "POST /v1/workspaces/{uuid}/add_topics"
             ]
           },
           {
