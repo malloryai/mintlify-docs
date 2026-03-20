@@ -235,7 +235,6 @@
           {
             "group": "Stories",
             "pages": [
-              "DELETE /v1/stories/{identifier}",
               "GET /v1/dashboards/current-events",
               "GET /v1/dashboards/vulnerabilities",
               "GET /v1/dashboards/{report_type}/latest",
